@@ -8,7 +8,9 @@ from task import *
 
 def taskOptimization():
     employees = []
+    employeeCounts = {}
     tasks = []
+    scheduledTasks = {}
     
     employees.extend(getEmployees())
     numEmployees = len(employees)
@@ -17,19 +19,23 @@ def taskOptimization():
     completion = {}
     for i in employees:
         e = Employee(**i)
+        employeeCounts[e.id] = 0
+        scheduledTasks[e.id] = []
     
     for i in tasks:
         t = Task(**i)
         completion[t.id] = "N"
 
-    # tasks.sort(key=lambda x.id)
 
     while(tasks):
         for i in tasks:
             t = Task(**i)
 
             if len(t.preReqTasks) == 0:
+                id = min(employeeCounts, key=employeeCounts.get)
                 print(t.id, t.completionTime)
+                scheduledTasks[id].append(t.id)
+                employeeCounts[id] += t.completionTime
                 completion[t.id] = "C"
                 tasks.remove(i)
             for x, j in enumerate(t.preReqTasks):
@@ -37,13 +43,15 @@ def taskOptimization():
                     break
                 if x == len(t.preReqTasks)-1:
                     print(t.id, t.completionTime)
+                    id = min(employeeCounts, key=employeeCounts.get)
+                    scheduledTasks[id].append(t.id)
+                    employeeCounts[id] += t.completionTime
                     completion[t.id] = "C"
                     tasks.remove(i)
-
+    print(scheduledTasks)
 
 
 if __name__ == "__main__" :
-    # task = Task(**task1_data)
     addEmployee(employee_data)
     addTask(task1_data)
     taskOptimization()
