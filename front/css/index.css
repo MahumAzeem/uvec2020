@@ -1,0 +1,145 @@
+#navbar-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(207, 51, 51);
+}
+
+#navbar-li {
+  float: left;
+}
+
+#navbar-li  a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+#navbar-li a:hover {
+  background-color: #111;
+}
+
+.navbar-selected {
+  background-color: rgb(235, 134, 134);
+}
+
+.swimlanes {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.swimlanes-column {
+  min-width: 15rem; /* this is what makes the concept legible when there are many swimlanes */
+  flex: 1;  /* to keep everything equally sized */
+  background: #F2F2F3;  /* replace with casper color variable */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  /* border: 1px solid; */
+  /* border-color: rgb(209, 84, 84); */
+  background: rgb(233, 233, 234);
+}
+
+.swimlanes-list{
+  padding: 0;
+  margin: 0;
+}
+
+.swimlanes-listItem {
+  list-style-type: none;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: #FFF;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 48rem) {
+  .swimlanes {
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+}
+
+.new-task-btn {
+  background-color: rgb(231, 102, 102)!important;
+  color: white;
+  border-radius: 5px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgb(255,255,255);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: rgb(235, 134, 134);
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 16px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: rgb(235, 134, 134);
+  color: white;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}

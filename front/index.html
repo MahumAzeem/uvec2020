@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kira</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+</head>
+<body>
+	<div id='navbar'>
+		<ul id='navbar-ul'>
+			<li id='navbar-li' class='navbar-selected'><a href="index.html">Home</a></li>
+			<li id='navbar-li'><a href="plan/index.html">Plan</a></li>
+			<li id='navbar-li'><a href="task/index.html">Tasks</a></li>
+		</ul>
+	</div>
+
+	<h1>Kira</h1>
+
+	<!-------------------------------------------------------------------------------------->
+	<div id="new-task-modal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h2>New Task</h2>
+			</div>
+			<div class="modal-body">
+				<form id='new-task-form'action="">
+					<label for="title">Title:</label><br>
+					<input type="text" id="title" name="title"><br>
+
+					<label for="description">Desciption:</label><br>
+					<input type="text" id="description" name="description"><br>
+
+					<label for="author">Created By:</label>
+					<select name="author" id="author">
+						<option value="1">Mahum</option>
+						<option value="2">Sarah</option>
+						<option value="3">Rafay</option>
+					</select>
+
+					<label for="priority">Priority:</label>
+					<select name="priority" id="priority">
+						<option value="high">High</option>
+						<option value="mediums">Medium</option>
+						<option value="low">Low</option>
+					</select>
+
+					<label for="duration">Duration(in weeks):</label>
+					<input type="number" id="duration" name="duration" min="1">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id='modal-submit'class='submit-new-task' type='submit' form='new-task-form' value='Submit'>Submit</button>
+			</div>
+		</div>
+
+	</div>
+	<!-------------------------------------------------------------------------------------->
+
+<section class="swimlanes">
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Planning</a>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-planning'>New Task</button>
+		</div>
+    <ul class="swimlanes-list">
+			<div class="swimlanes-listItem">
+				<h4>Title</h4>
+				<p>
+					<span>Description:</span>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas expedita
+				</p>
+				<div>
+					<span>Creator: </span>
+					Bob
+				</div>
+				<div>
+					<span>Priority: </span>
+					high
+				</div>
+			</div>
+			<div>
+				<li class="swimlanes-listItem">Dummy content goes here</li>
+			</div>
+
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">In Progress</a>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-progress'>New Task</button>
+		</div>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Needs Review</a>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-review'>New Task</button>
+		</div>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Finished</a>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-finished'>New Task</button>
+		</div>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+  </div>
+</section>
+<script src="js/index.js"></script>
+</body>
+</html>
