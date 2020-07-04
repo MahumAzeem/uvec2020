@@ -5,6 +5,7 @@ See README for running instructions.
 """
 import importlib
 import json
+import db_setup as db
 
 from fastapi import FastAPI, HTTPException, Path, Query
 
@@ -13,7 +14,7 @@ from models.employee import Employee
 #from storage import database
 
 app = FastAPI()
-
+db.run()
 @app.get("/all_tasks")
 async def get_all_tasks():
     results = {1,2,3}
@@ -39,10 +40,29 @@ async def get_task(id: int) -> Task:
         creator= 21
     )
     return task
+      
+
+
 
 @app.get("/employee/{id}")
 async def get_employee(id: int):
     return null
+
+@app.put("employee/{id}")
+async def update_employee(employee: Employee):
+    employee.update(id)
+    return employee   
+
+@app.get("/all_employees")
+async def get_all_employees():
+    return []
+
+@app.post("/employee")
+async def create_employee(employee: Employee):
+    employee.save()
+    return employee
+
+ 
 
 @app.get("/")
 async def root():
