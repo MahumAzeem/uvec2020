@@ -4,8 +4,10 @@ from pydantic import BaseModel
 
 # will be a db
 tasks = [
-    {'id': '1', 'title': 'Task 1', 'description': 'A description', 'priority': '1', 'status': 'In Progress', 'creator': '1', 'assigned': [1,2], 'completionTime': 4, 'preReqTasks': [2]},
-    {'id': '2', 'title': 'Task 2', 'description': 'A description', 'priority': '1', 'status': 'In Progress', 'creator': '1', 'completionTime': 4}
+    {'id': '1', 'title': 'Task 1', 'description': 'A description', 'priority': '2', 'status': 'In Progress', 'creator': '1', 'assigned': [1,2], 'completionTime': 4, 'preReqTasks': [2,4]},
+    {'id': '2', 'title': 'Task 2', 'description': 'A description', 'priority': '3', 'status': 'In Progress', 'creator': '1', 'completionTime': 4},
+    {'id': '4', 'title': 'Task 4', 'description': 'A description', 'priority': '1', 'status': 'In Progress', 'creator': '1', 'completionTime': 4},
+    {'id': '5', 'title': 'Task 5', 'description': 'A description', 'priority': '1', 'status': 'In Progress', 'creator': '1', 'completionTime': 4, 'preReqTasks': [4,1,3]}
 ]
 
 class Task(BaseModel):
@@ -36,7 +38,7 @@ task1_data = {
     'id': '3',
     'title': 'Task 3',
     'description': 'A description',
-    'priority': '1',
+    'priority': '3',
     'status': 'In Progress',
     'creator': '1',
     'assigned': [1,2],
