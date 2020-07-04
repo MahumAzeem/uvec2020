@@ -2,6 +2,7 @@ from typing import List
 from pydantic import BaseModel
 from models.employee import * 
 from models.task import *
+from db_setup import *
 
 employees = []
 tasks = []
@@ -9,14 +10,8 @@ tasks = []
 def addEmployee(e):
     employees.append(e)
 
-def getEmployees():
-    return employees
-
 def addTask(task):
     tasks.append(task)
-
-def getTasks():
-    return tasks
 
 
 def taskOptimization():
@@ -24,18 +19,28 @@ def taskOptimization():
     employeeCounts = {}
     tasks = []
     scheduledTasks = {}
+
     
-    employees.extend(getEmployees())
+    e = getEmployees()
+    if e is not None:
+        for i in e:
+            em = {'employee_id': i[0], 'name': i[1], 'tasks_assigned': i[2], 'tasks_created': i[3]}
+
+    
     numEmployees = len(employees)
-    tasks.extend(getTasks())
+    # tasks.extend(getTasks())
+    if t is not None:
+        for i in t:
+            ta = {'task_id': i[0], 'title': i[1], 'description': i[2], 'priority': i[3], 'status': i[4], 'assigned_to': i[4].split(' '), 'completion_time': i[5], 'blocks_task': i[6].split(' '), 'blocked_by': i[7].split(' ')}
+
     numTasks = len(tasks)
     completion = {}
 
     # set all employees with no tasks
-    for i in employees:
-        e = Employee(**i)
-        # employeeCounts[e.employee_id] = 0
-        # scheduledTasks[e.employee_id] = []
+    # for i in employees:
+    #     e = Employee(**i)
+    #     # employeeCounts[e.employee_id] = 0
+    #     # scheduledTasks[e.employee_id] = []
     
     # set all task ids as incomplete
     for i in tasks:

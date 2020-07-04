@@ -90,6 +90,11 @@ def getEmployees():
     rows = curs.execute("SELECT * FROM employee ORDER BY id").fetchall()
     print(rows)
 
+def getTask(id):
+    conn = get_db()
+    curs = conn.cursor()
+    rows = curs.execute("SELECT * FROM tasks WHERE id=?;", (id,)).fetchall()
+    print(rows)
 
 
 task1 = {'task_id': '1', 'title': 'Task 1', 'description': 'A description', 'priority': 'MED', 'status': 'In Progress', 'creator': '1', 'assigned_to': [1,2], 'completion_time': 4, 'blocked_by': [2,4]}
@@ -98,7 +103,8 @@ employee1 = {'employee_id': '1', 'name': 'John Smith'}
 if __name__ == "__main__":
     # init()
     # createTask(task1)
-    getTasks()
-    # createEmployee(Employee(**employee1))
-    getEmployees()
+    # getTasks()
+    # # createEmployee(Employee(**employee1))
+    # getEmployees()
+    getTask(1)
     close()
