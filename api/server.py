@@ -4,11 +4,12 @@ For request/response format specification, see api_spec.py.
 See README for running instructions.
 """
 import importlib
+import json
 
 from fastapi import FastAPI, HTTPException, Path, Query
 
-from task import Task
-from employee import Employee
+from models.task import Task
+from models.employee import Employee
 #from storage import database
 
 app = FastAPI()
@@ -39,6 +40,9 @@ async def get_task(id: int) -> Task:
     )
     return task
 
+@app.get("/employee/{id}")
+async def get_employee(id: int):
+    return null
 
 @app.get("/")
 async def root():
