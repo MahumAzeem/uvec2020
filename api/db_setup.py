@@ -51,7 +51,7 @@ def createTask(t):
     
     conn.commit()
 
-    resp = curs.execute("SELECT * FROM task WHERE id=last_insert_rowid()").fetchall()
+    resp = curs.execute("SELECT rowid FROM tasks WHERE id=last_insert_rowid()").fetchall()
     print(resp)
     return resp
 
@@ -60,7 +60,7 @@ def getTasks():
     curs = conn.cursor()
     # curs.execute()
     rows = curs.execute("SELECT * FROM tasks ORDER BY id").fetchall()
-    print(rows)
+    return rows
 
 def createEmployee(e):
     conn = get_db()
