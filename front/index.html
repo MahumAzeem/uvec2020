@@ -3,9 +3,7 @@
 <head>
 	<title>Kira</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<script src="js/index.js"></script>
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 </head>
 <body>
 	<div id='navbar'>
@@ -18,56 +16,58 @@
 
 	<h1>Kira</h1>
 
+	<!-------------------------------------------------------------------------------------->
+	<div id="new-task-modal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h2>New Task</h2>
+			</div>
+			<div class="modal-body">
+				<form id='new-task-form'action="">
+					<label for="title">Title:</label><br>
+					<input type="text" id="title" name="title"><br>
+
+					<label for="description">Desciption:</label><br>
+					<input type="text" id="description" name="description"><br>
+
+					<label for="author">Created By:</label>
+					<select name="author" id="author">
+						<option value="1">Mahum</option>
+						<option value="2">Sarah</option>
+						<option value="3">Rafay</option>
+					</select>
+
+					<label for="priority">Priority:</label>
+					<select name="priority" id="priority">
+						<option value="high">High</option>
+						<option value="mediums">Medium</option>
+						<option value="low">Low</option>
+					</select>
+
+					<label for="duration">Duration(in weeks):</label>
+					<input type="number" id="duration" name="duration" min="1">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id='modal-submit'class='submit-new-task' type='submit' form='new-task-form' value='Submit'>Submit</button>
+			</div>
+		</div>
+
+	</div>
+	<!-------------------------------------------------------------------------------------->
+
 <section class="swimlanes">
   <div class="swimlanes-column">
     <h3>
       <a href="#">Planning</a>
 		</h3>
-		<!-------------------------------------------------------------------------------------->
 		<div>
-			<button id='btn-newtask' onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">New Task</button>
-
-			<div id="id01" class="w3-modal">
-				<div class="w3-modal-content w3-card-4">
-					<header class="w3-container w3-teal">
-						<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-						<h2>New Task</h2>
-					</header>
-					<div class="w3-container">
-						<form action="">
-							<label for="title">Title:</label><br>
-							<input type="text" id="title" name="title"><br>
-
-							<label for="desciption">Desciption:</label><br>
-							<input type="text" id="desciption" name="desciption"><br>
-
-							<label for="createdby">Created By:</label>
-							<select name="createdby" id="createdby">
-								<option value="mahum">Mahum</option>
-								<option value="sarah">Sarah</option>
-								<option value="rafay">Rafay</option>
-							</select>
-
-							<label for="priority">Priority:</label>
-							<select name="priority" id="priority">
-								<option value="high">High</option>
-								<option value="mediums">Medium</option>
-								<option value="low">Low</option>
-							</select>
-
-							<label for="time">Time to complete (in weeks):</label>
-							<input type="number" id="time" name="time" min="1">
-
-
-						</form>
-					</div>
-					<footer class="w3-container w3-teal">
-						<button type="button">Submit</button>
-					</footer>
-				</div>
-			</div>
+			<button class='new-task-btn' id='new-task-planning'>New Task</button>
 		</div>
-		<!-------------------------------------------------------------------------------------->
     <ul class="swimlanes-list">
 			<div class="swimlanes-listItem">
 				<h4>Title</h4>
@@ -94,7 +94,10 @@
   <div class="swimlanes-column">
     <h3>
       <a href="#">In Progress</a>
-    </h3>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-progress'>New Task</button>
+		</div>
     <ul class="swimlanes-list">
       <li class="swimlanes-listItem">Dummy content goes here</li>
       <li class="swimlanes-listItem">Dummy content goes here</li>
@@ -105,7 +108,10 @@
   <div class="swimlanes-column">
     <h3>
       <a href="#">Needs Review</a>
-    </h3>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-review'>New Task</button>
+		</div>
     <ul class="swimlanes-list">
       <li class="swimlanes-listItem">Dummy content goes here</li>
       <li class="swimlanes-listItem">Dummy content goes here</li>
@@ -115,14 +121,16 @@
   <div class="swimlanes-column">
     <h3>
       <a href="#">Finished</a>
-    </h3>
+		</h3>
+		<div>
+			<button class='new-task-btn' id='new-task-finished'>New Task</button>
+		</div>
     <ul class="swimlanes-list">
       <li class="swimlanes-listItem">Dummy content goes here</li>
       <li class="swimlanes-listItem">Dummy content goes here</li>
     </ul>
   </div>
 </section>
-
-
+<script src="js/index.js"></script>
 </body>
 </html>
