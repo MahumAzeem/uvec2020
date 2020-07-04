@@ -1,5 +1,6 @@
 import sqlite3
 from models.task import *
+from models.employee import *
 
 sqlite_file = "kira.db"
 
@@ -32,7 +33,7 @@ def get_db():
 def createTask(t):
     conn = get_db()
     curs = conn.cursor()
-    task = Task(**t)
+    task = t
     if not task.assigned_to:
         assigned_to = ""
     else:
@@ -50,6 +51,10 @@ def createTask(t):
     
     conn.commit()
 
+    resp = curs.execute("SELECT * FROM task WHERE id=last_insert_rowid()").fetchall()
+    print(resp)
+    return resp
+
 def getTasks():
     conn = get_db()
     curs = conn.cursor()
@@ -57,12 +62,43 @@ def getTasks():
     rows = curs.execute("SELECT * FROM tasks ORDER BY id").fetchall()
     print(rows)
 
+def createEmployee(e):
+    conn = get_db()
+    curs = conn.cursor()
+    # employee = Employee(**e)
+    employee = e
+    if not employee.tasks_assigned:
+        assigned = ""
+    else:
+        assigned = ((" ").join(str(v) for v in employee.tasks_assigned))
+    if not employee.tasks_created:
+        created = ""
+    else:
+        created = ((" ").join(str(v) for v in employee.tasks_created))
+
+    curs.execute("INSERT INTO employee (name, assigned, created) VALUES (?,?,?)", (employee.name, assigned, created))
+
+    conn.commit()
+
+    resp = curs.execute("SELECT * FROM employee WHERE id=last_insert_rowid()").fetchall()
+    print(resp)
+    return resp
+
+def getEmployees():
+    conn = get_db()
+    curs = conn.cursor()
+    rows = curs.execute("SELECT * FROM employee ORDER BY id").fetchall()
+    print(rows)
+
 
 
 task1 = {'task_id': '1', 'title': 'Task 1', 'description': 'A description', 'priority': 'MED', 'status': 'In Progress', 'creator': '1', 'assigned_to': [1,2], 'completion_time': 4, 'blocked_by': [2,4]}
+employee1 = {'employee_id': '1', 'name': 'John Smith'}
 
 if __name__ == "__main__":
     # init()
-    createTask(task1)
+    # createTask(task1)
     getTasks()
+    # createEmployee(Employee(**employee1))
+    getEmployees()
     close()
