@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kira</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="js/index.js"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+</head>
+<body>
+	<div id='navbar'>
+		<ul id='navbar-ul'>
+			<li id='navbar-li' class='navbar-selected'><a href="index.html">Home</a></li>
+			<li id='navbar-li'><a href="plan/index.html">Plan</a></li>
+			<li id='navbar-li'><a href="task/index.html">Tasks</a></li>
+		</ul>
+	</div>
+
+	<h1>Kira</h1>
+
+<section class="swimlanes">
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Planning</a>
+		</h3>
+		<!-------------------------------------------------------------------------------------->
+		<div>
+			<button id='btn-newtask' onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">New Task</button>
+
+			<div id="id01" class="w3-modal">
+				<div class="w3-modal-content w3-card-4">
+					<header class="w3-container w3-teal">
+						<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+						<h2>New Task</h2>
+					</header>
+					<div class="w3-container">
+						<form action="">
+							<label for="title">Title:</label><br>
+							<input type="text" id="title" name="title"><br>
+
+							<label for="desciption">Desciption:</label><br>
+							<input type="text" id="desciption" name="desciption"><br>
+
+							<label for="createdby">Created By:</label>
+							<select name="createdby" id="createdby">
+								<option value="mahum">Mahum</option>
+								<option value="sarah">Sarah</option>
+								<option value="rafay">Rafay</option>
+							</select>
+
+							<label for="priority">Priority:</label>
+							<select name="priority" id="priority">
+								<option value="high">High</option>
+								<option value="mediums">Medium</option>
+								<option value="low">Low</option>
+							</select>
+
+							<label for="time">Time to complete (in weeks):</label>
+							<input type="number" id="time" name="time" min="1">
+
+
+						</form>
+					</div>
+					<footer class="w3-container w3-teal">
+						<button type="button">Submit</button>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<!-------------------------------------------------------------------------------------->
+    <ul class="swimlanes-list">
+			<div class="swimlanes-listItem">
+				<h4>Title</h4>
+				<p>
+					<span>Description:</span>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas expedita
+				</p>
+				<div>
+					<span>Creator: </span>
+					Bob
+				</div>
+				<div>
+					<span>Priority: </span>
+					high
+				</div>
+			</div>
+			<div>
+				<li class="swimlanes-listItem">Dummy content goes here</li>
+			</div>
+
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">In Progress</a>
+    </h3>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Needs Review</a>
+    </h3>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+	</div>
+
+  <div class="swimlanes-column">
+    <h3>
+      <a href="#">Finished</a>
+    </h3>
+    <ul class="swimlanes-list">
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+      <li class="swimlanes-listItem">Dummy content goes here</li>
+    </ul>
+  </div>
+</section>
+
+
+</body>
+</html>
