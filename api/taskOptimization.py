@@ -7,11 +7,11 @@ from db_setup import *
 employees = []
 tasks = []
 
-def addEmployee(e):
-    employees.append(e)
+# def addEmployee(e):
+#     employees.append(e)
 
-def addTask(task):
-    tasks.append(task)
+# def addTask(task):
+#     tasks.append(task)
 
 
 def taskOptimization():
@@ -25,13 +25,18 @@ def taskOptimization():
     if e is not None:
         for i in e:
             em = {'employee_id': i[0], 'name': i[1], 'tasks_assigned': i[2], 'tasks_created': i[3]}
+            employ = Employee(**employ)
+            employees.append(employ)
 
     
     numEmployees = len(employees)
     # tasks.extend(getTasks())
+    t = getTasks()
     if t is not None:
         for i in t:
-            ta = {'task_id': i[0], 'title': i[1], 'description': i[2], 'priority': i[3], 'status': i[4], 'assigned_to': i[4].split(' '), 'completion_time': i[5], 'blocks_task': i[6].split(' '), 'blocked_by': i[7].split(' ')}
+            ta = {'task_id': i[0], 'title': i[1], 'description': i[2], 'priority': i[3], 'status': i[4], 'assigned_to': (int(x) for x in i[4].split(' ')), 'completion_time': i[5], 'blocks_task': (int(x) for x in i[6].split(' ')), 'blocked_by': (int(x) for x in i[7].split(' '))}
+            task = Task(**ta)
+            tasks.append(task)
 
     numTasks = len(tasks)
     completion = {}
@@ -81,6 +86,6 @@ task1 = {'task_id': '1', 'title': 'Task 1', 'description': 'A description', 'pri
 employee1 = {'employee_id': '1', 'name': 'John Smith'}
 
 if __name__ == "__main__" :
-    addEmployee(employee1)
-    addTask(task1)
+    # addEmployee(employee1)
+    # addTask(task1)
     taskOptimization()
