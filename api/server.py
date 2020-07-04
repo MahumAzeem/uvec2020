@@ -37,7 +37,7 @@ async def get_all_tasks():
 
 @app.get("/task/{id}")
 async def get_task(id: int) -> Task:
-    task = db.getTask(1)
+    task = db.getTask(id)
     return task
       
 @app.post("/task")
