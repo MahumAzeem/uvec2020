@@ -7,9 +7,6 @@ class Employee(BaseModel):
     tasks_assigned: List[int] = None
     tasks_created: List[int] = None
 
-    def assign_task(self, task_id:int):
-        self.tasks_assigned.append(task_id)
-
     # def save(self):
     #     return True
     

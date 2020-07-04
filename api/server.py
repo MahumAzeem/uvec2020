@@ -8,45 +8,55 @@ import json
 import db_setup as db
 
 from fastapi import FastAPI, HTTPException, Path, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 from models.task import Task
 from models.employee import Employee
 #from storage import database
 
 app = FastAPI()
-db.run()
+db.init()
+
+def application(environ, start_response):
+  if environ['REQUEST_METHOD'] == 'OPTIONS':
+    start_response(
+      '200 OK',
+      [
+        ('Content-Type', 'application/json'),
+        ('Access-Control-Allow-Origin', '*'),
+        ('Access-Control-Allow-Headers', 'Authorization, Content-Type'),
+        ('Access-Control-Allow-Methods', 'POST'),
+      ]
+    )
+    return ''
+
 @app.get("/all_tasks")
 async def get_all_tasks():
-    results = {1,2,3}
-        #get tasks from db, filler data rn
-
+    results = db.getTasks()
     return results
 
 @app.get("/task/{id}")
 async def get_task(id: int) -> Task:
-    """
-    GET route for getting the a specific task.
-
-    Args:
-        id: The id of the task required.
-
-    Returns:
-        A JSON response contaning a task object.
-    """
-    #example task:
-    task = Task(
-        task_id= 1,
-        title="Example Task",
-        creator= 21
-    )
+    task = db.getTask(1)
     return task
       
+@app.post("/task")
+async def create_task(task: Task):
+    task.task_id = db.createTask(task)[0][0]
+    return task
 
-
+# @app.delete("/task/{id}")
+# async def delete_task(id: int):
+#     return OK
 
 @app.get("/employee/{id}")
 async def get_employee(id: int):
-    return null
+    new = Employee(
+        name = "Mahum",
+        tasks_assigned = {1,2,3},
+        tasks_created = {1}
+    )
+    return new
 
 @app.put("employee/{id}")
 async def update_employee(employee: Employee):
@@ -59,7 +69,7 @@ async def get_all_employees():
 
 @app.post("/employee")
 async def create_employee(employee: Employee):
-    employee.save()
+    db.createEmployee(Employee)
     return employee
 
  

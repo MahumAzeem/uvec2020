@@ -2,7 +2,7 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 class Task(BaseModel):
-   task_id: int
+   task_id: int = None
    title: str
    description: str = None
    priority: str = None
